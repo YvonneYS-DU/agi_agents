@@ -1,0 +1,12 @@
+LICENSE
+MANIFEST.in
+README.md
+pyproject.toml
+setup.py
+agi_agents/__init__.py
+agi_agents/agi_agent.py
+agi_agents.egg-info/PKG-INFO
+agi_agents.egg-info/SOURCES.txt
+agi_agents.egg-info/dependency_links.txt
+agi_agents.egg-info/requires.txt
+agi_agents.egg-info/top_level.txt

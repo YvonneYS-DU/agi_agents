@@ -80,9 +80,9 @@ docs = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/YvonneYS-DU/ai_agent"
-Repository = "https://github.com/YvonneYS-DU/ai_agent"
-"Bug Reports" = "https://github.com/YvonneYS-DU/ai_agent/issues"
+Homepage = "https://github.com/YvonneYS-DU/agi_agents"
+Repository = "https://github.com/YvonneYS-DU/agi_agents"
+"Bug Reports" = "https://github.com/YvonneYS-DU/agi_agents/issues"
 
 [tool.setuptools.packages.find]
 where = ["."]

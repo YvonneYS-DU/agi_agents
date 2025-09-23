@@ -1,5 +1,5 @@
 """
-Setup script for AI Agent package.
+Setup script for AGI Agents package.
 """
 
 from setuptools import setup, find_packages
@@ -15,7 +15,7 @@ setup(
     description="A streamlined interface for LangChain AI Agent creation with multi-modal support",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/YvonneYS-DU/ai_agent",
+    url="https://github.com/YvonneYS-DU/agi_agents",
     packages=find_packages(),
     classifiers=[
         "Development Status :: 4 - Beta",
@@ -84,7 +84,7 @@ setup(
     },
     keywords="langchain, ai, llm, multimodal, agents, wrapper",
     project_urls={
-        "Bug Reports": "https://github.com/YvonneYS-DU/ai_agent/issues",
-        "Source": "https://github.com/YvonneYS-DU/ai_agent",
+        "Bug Reports": "https://github.com/YvonneYS-DU/agi_agents/issues",
+        "Source": "https://github.com/YvonneYS-DU/agi_agents",
     },
 )

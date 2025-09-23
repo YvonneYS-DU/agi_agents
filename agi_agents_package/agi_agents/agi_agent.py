@@ -1,10 +1,10 @@
 """
-LLM Wrapper - A streamlined interface for LangChain AI agent creation.
+- A streamlined interface for LangChain AI agent creation.
 
 This module provides a simplified API for creating and managing AI agents
 with multi-modal support (text and images) using LangChain framework.
 
-Author: LLM Wrapper Team
+Author: YvonneYS-Du
 Version: 0.2.1
 Date: Aug 2025
 """

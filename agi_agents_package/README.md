@@ -1,4 +1,4 @@
-# AI Agent
+# AGI Agents
 
 A streamlined interface for LangChain AI agent creation with multi-modal support (text and images).
 

@@ -1,14 +1,14 @@
-Metadata-Version: 2.4
-Name: ai-agent
+Metadata-Version: 2.1
+Name: agi-agents
 Version: 0.2.1
 Summary: A streamlined interface for LangChain based AI agent creation with multi-modal support
-Home-page: https://github.com/YvonneYS-DU/ai_agent
+Home-page: https://github.com/YvonneYS-DU/agi_agents
 Author: YvonneYS-Du
 Author-email: YvonneYS-Du <yvdu.ai2077@gmail.com>
 License: MIT
-Project-URL: Homepage, https://github.com/YvonneYS-DU/ai_agent
-Project-URL: Repository, https://github.com/YvonneYS-DU/ai_agent
-Project-URL: Bug Reports, https://github.com/YvonneYS-DU/ai_agent/issues
+Project-URL: Homepage, https://github.com/YvonneYS-DU/agi_agents
+Project-URL: Repository, https://github.com/YvonneYS-DU/agi_agents
+Project-URL: Bug Reports, https://github.com/YvonneYS-DU/agi_agents/issues
 Keywords: langchain,ai,llm,multimodal,agents,wrapper
 Classifier: Development Status :: 4 - Beta
 Classifier: Intended Audience :: Developers
@@ -54,12 +54,8 @@ Requires-Dist: mypy>=0.900; extra == "dev"
 Provides-Extra: docs
 Requires-Dist: sphinx>=4.0.0; extra == "docs"
 Requires-Dist: sphinx-rtd-theme>=1.0.0; extra == "docs"
-Dynamic: author
-Dynamic: home-page
-Dynamic: license-file
-Dynamic: requires-python
 
-# AI Agent
+# AGI Agents
 
 A streamlined interface for LangChain AI agent creation with multi-modal support (text and images).
 
@@ -76,13 +72,13 @@ A streamlined interface for LangChain AI agent creation with multi-modal support
 ## Installation
 
 ```bash
-pip install ai-agent
+pip install agi-agents
 ```
 
 ## Quick Start
 
 ```python
-from ai_agent import Agents
+from agi_agents import Agents
 from langchain_openai import ChatOpenAI
 
 # Initialize your model
