@@ -1,0 +1,163 @@
+Metadata-Version: 2.4
+Name: ai-agent
+Version: 0.2.1
+Summary: A streamlined interface for LangChain based AI agent creation with multi-modal support
+Home-page: https://github.com/YvonneYS-DU/ai_agent
+Author: YvonneYS-Du
+Author-email: YvonneYS-Du <yvdu.ai2077@gmail.com>
+License: MIT
+Project-URL: Homepage, https://github.com/YvonneYS-DU/ai_agent
+Project-URL: Repository, https://github.com/YvonneYS-DU/ai_agent
+Project-URL: Bug Reports, https://github.com/YvonneYS-DU/ai_agent/issues
+Keywords: langchain,ai,llm,multimodal,agents,wrapper
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: langchain<0.4.0,>=0.3.0
+Requires-Dist: langchain-core<0.4.0,>=0.3.5
+Requires-Dist: langchain-openai>=0.1.0
+Requires-Dist: langchain-anthropic>=0.1.0
+Requires-Dist: langchain-text-splitters>=0.3.0
+Requires-Dist: openai<2.0.0,>=1.76.0
+Requires-Dist: anthropic<1.0.0,>=0.40.0
+Requires-Dist: httpx<0.28.0,>=0.27.2
+Requires-Dist: aiohttp>=3.8.0
+Requires-Dist: aiofiles>=23.0.0
+Requires-Dist: PyMuPDF>=1.20.0
+Requires-Dist: python-docx>=1.0.0
+Requires-Dist: unstructured>=0.15.0
+Requires-Dist: openpyxl>=3.1.0
+Requires-Dist: Pillow>=9.0.0
+Requires-Dist: pillow-heif>=0.8.0
+Requires-Dist: pandas>=1.5.0
+Requires-Dist: regex>=2020.1.1
+Requires-Dist: azure-storage-blob>=12.0.0
+Requires-Dist: python-dotenv>=1.0.0
+Requires-Dist: urllib3>=2.0.0
+Provides-Extra: dev
+Requires-Dist: pytest>=6.0.0; extra == "dev"
+Requires-Dist: black>=22.0.0; extra == "dev"
+Requires-Dist: flake8>=4.0.0; extra == "dev"
+Requires-Dist: mypy>=0.900; extra == "dev"
+Provides-Extra: docs
+Requires-Dist: sphinx>=4.0.0; extra == "docs"
+Requires-Dist: sphinx-rtd-theme>=1.0.0; extra == "docs"
+Dynamic: author
+Dynamic: home-page
+Dynamic: license-file
+Dynamic: requires-python
+
+# AI Agent
+
+A streamlined interface for LangChain AI agent creation with multi-modal support (text and images).
+
+## Features
+
+- **Simple API**: Easy-to-use interface for creating AI agents
+- **Multi-modal Support**: Handle both text and image inputs seamlessly
+- **LangChain Integration**: Built on top of the powerful LangChain framework
+- **Flexible Models**: Support for OpenAI, Anthropic, and other LLM providers
+- **Document Processing**: PDF and image processing capabilities
+- **Context Management**: Advanced context engineering utilities
+- **Async Support**: Both synchronous and asynchronous execution
+
+## Installation
+
+```bash
+pip install ai-agent
+```
+
+## Quick Start
+
+```python
+from ai_agent import Agents
+from langchain_openai import ChatOpenAI
+
+# Initialize your model
+llm = ChatOpenAI(model_name='gpt-4o-mini')
+
+# Create a simple text processing chain
+chain = Agents.chain_create(
+    model=llm,
+    text_prompt_template="Answer this question: {question}",
+)
+
+# Use the chain
+response = Agents.chain_batch_generator(
+    chain, 
+    {"question": "What is artificial intelligence?"}
+)
+print(response)
+```
+
+## Multi-modal Example
+
+```python
+# Create a chain that processes both text and images
+chain = Agents.chain_create(
+    model=llm,
+    text_prompt_template="Describe this image: {description}",
+    image_prompt_template=True
+)
+
+# Process an image
+base64_image = Agents.normalize_image_to_base64("path/to/image.jpg")
+response = Agents.chain_batch_generator(
+    chain,
+    {
+        "description": "What do you see?",
+        "base64_image": base64_image,
+        "detail_parameter": "high"
+    }
+)
+```
+
+## Main Classes
+
+### Agents
+The core class for creating and managing AI agents:
+- `chain_create()`: Create LangChain processing chains
+- `chain_batch_generator()`: Execute chains synchronously  
+- `chain_stream_generator()`: Stream responses in real-time
+- `continue_chain_batch_generator()`: Handle long conversations with continuation
+
+### Contexts
+Utility class for context engineering:
+- `create_context_layer()`: Create context templates
+- `compress_context()`: Compress contexts to fit token limits
+
+### Document
+Document processing utilities:
+- `extract_text_from_pdf()`: Extract text from PDFs
+- `convert_pdf_to_images()`: Convert PDFs to images
+- `pdf_to_base64_images()`: Convert PDFs to base64 for LLM processing
+
+## Requirements
+
+- Python 3.8+
+- langchain-openai
+- langchain-anthropic  
+- langchain-core
+- PyMuPDF
+- Pillow
+- pillow-heif
+
+## License
+
+MIT License
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.

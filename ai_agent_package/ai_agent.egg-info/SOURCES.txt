@@ -1,0 +1,12 @@
+LICENSE
+MANIFEST.in
+README.md
+pyproject.toml
+setup.py
+ai_agent/__init__.py
+ai_agent/ai_agent.py
+ai_agent.egg-info/PKG-INFO
+ai_agent.egg-info/SOURCES.txt
+ai_agent.egg-info/dependency_links.txt
+ai_agent.egg-info/requires.txt
+ai_agent.egg-info/top_level.txt
