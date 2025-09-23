@@ -8,7 +8,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setup(
-    name="ai-agent",
+    name="agi-agents",
     version="0.2.1",
     author="YvonneYS-Du",
     author_email="yvdu.ai2077@gmail.com",

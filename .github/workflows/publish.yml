@@ -24,7 +24,7 @@ jobs:
 
     - name: Build package
       run: |
-        cd ai_agent_package
+        cd agi-agents-package
         python -m build
 
     - name: Publish to PyPI
@@ -32,5 +32,5 @@ jobs:
         TWINE_USERNAME: __token__
         TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
       run: |
-        cd ai_agent_package
+        cd agi-agents-package
         python -m twine upload dist/*

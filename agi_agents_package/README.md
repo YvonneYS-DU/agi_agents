@@ -15,13 +15,13 @@ A streamlined interface for LangChain AI agent creation with multi-modal support
 ## Installation
 
 ```bash
-pip install ai-agent
+pip install agi-agents
 ```
 
 ## Quick Start
 
 ```python
-from ai_agent import Agents
+from agi_agents import Agents
 from langchain_openai import ChatOpenAI
 
 # Initialize your model
