@@ -1,0 +1,384 @@
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  height: 100%;
+  background: #f5f7fa;
+  overflow: hidden;
+}
+
+.column-border {
+  border-color: rgba(15, 23, 42, 0.08);
+}
+
+.canvas-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #f8fafc 0%, #e7eff9 100%);
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.canvas-container svg .canvas-connection {
+  pointer-events: stroke;
+}
+
+.canvas-container svg .canvas-label {
+  pointer-events: none;
+}
+
+.canvas-container svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: auto;
+}
+
+.canvas-nodes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.canvas-node {
+  position: absolute;
+  pointer-events: auto;
+  width: 220px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.08);
+  cursor: grab;
+  user-select: none;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.canvas-node.dragging {
+  cursor: grabbing;
+  transform: scale(1.02);
+  box-shadow: 0 16px 32px rgba(15, 23, 42, 0.12);
+}
+
+.canvas-node.connecting {
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+  border-color: rgba(59, 130, 246, 0.6);
+}
+
+.canvas-node.selected {
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.45);
+  border-color: rgba(59, 130, 246, 0.75);
+}
+
+.canvas-connection {
+  stroke: rgba(59, 130, 246, 0.65);
+  stroke-width: 2.5;
+}
+
+.canvas-placeholder {
+  height: 100%;
+  border-radius: 18px;
+  border: 1px dashed rgba(15, 23, 42, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(15, 23, 42, 0.4);
+  font-size: 0.9rem;
+}
+
+.canvas-connection.direct {
+  stroke-dasharray: none;
+}
+
+.canvas-connection.rule {
+  stroke-dasharray: 6 6;
+}
+
+.canvas-connection.custom {
+  stroke-dasharray: 2 6;
+  stroke: rgba(99, 102, 241, 0.75);
+}
+
+.canvas-label {
+  fill: rgba(30, 41, 59, 0.85);
+  font-size: 12px;
+  font-weight: 500;
+  pointer-events: none;
+}
+
+.canvas-connection.temp {
+  stroke: rgba(59, 130, 246, 0.4);
+  stroke-dasharray: 4 4;
+}
+
+.agent-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 2px;
+  border-radius: 14px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: white;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.04);
+  padding: 8px 12px;
+  height: 72px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.agent-card .agent-desc {
+  font-size: 0.72rem;
+  color: #475569;
+  line-height: 1.2;
+  line-clamp: 2;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.agent-card .agent-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.agent-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 32px rgba(15, 23, 42, 0.12);
+}
+
+.node-handle {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: #2563eb;
+  border: 2px solid white;
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.35);
+  cursor: crosshair;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+}
+
+.canvas-node:hover .node-handle,
+.node-connecting .node-handle {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.node-handle::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 999px;
+  background: rgba(37, 99, 235, 0.14);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.node-handle:hover::after {
+  opacity: 1;
+}
+
+.node-handle.handle-top {
+  top: -12px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.node-handle.handle-bottom {
+  bottom: -12px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.node-handle.handle-left {
+  left: -12px;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+.node-handle.handle-right {
+  right: -12px;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+.node-connecting .node-handle {
+  background: #16a34a;
+}
+
+.node-connecting {
+  box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.25);
+}
+
+.connection-menu {
+  position: absolute;
+  z-index: 20;
+  min-width: 170px;
+  padding: 10px;
+  border-radius: 10px;
+  background: white;
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.18);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.connection-menu h4 {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.connection-menu .menu-options {
+  display: flex;
+  gap: 6px;
+}
+
+.connection-menu .menu-options button {
+  flex: 1;
+  padding: 6px 8px;
+  border-radius: 8px;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  background: #f8fafc;
+  color: #1f2937;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.connection-menu .menu-options button.active {
+  background: #2563eb;
+  color: white;
+  border-color: #2563eb;
+}
+
+.connection-menu .menu-options button:hover {
+  background: #e0e7ff;
+  border-color: rgba(59, 130, 246, 0.6);
+}
+
+.connection-menu .menu-info {
+  font-size: 0.75rem;
+  color: #475569;
+  line-height: 1.4;
+  padding: 2px 0 4px;
+}
+
+.connection-menu .menu-info.hidden {
+  display: none;
+}
+
+.connection-menu .menu-input {
+  display: flex;
+  gap: 6px;
+}
+
+.connection-menu .menu-input.hidden {
+  display: none;
+}
+
+.connection-menu .menu-input input {
+  flex: 1;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(15, 23, 42, 0.15);
+  font-size: 0.75rem;
+}
+
+.connection-menu .menu-input button {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.connection-menu .menu-input button:hover {
+  background: #1d4ed8;
+}
+
+.canvas-arrowhead {
+  pointer-events: none;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  fill: #2563eb;
+  stroke: #2563eb;
+}
+
+.connection-menu .menu-thickness {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.connection-menu .menu-thickness .thickness-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.connection-menu .thickness-options {
+  display: flex;
+  gap: 6px;
+}
+
+.connection-menu .thickness-options button {
+  flex: 1;
+  padding: 6px 8px;
+  border-radius: 8px;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  background: #f1f5f9;
+  color: #1f2937;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.connection-menu .thickness-options button.active {
+  background: #2563eb;
+  color: white;
+  border-color: #2563eb;
+}
+
+.connection-menu .thickness-options button:hover {
+  background: #e0e7ff;
+  border-color: rgba(59, 130, 246, 0.6);
+}
+
+.canvas-tooltip {
+  position: absolute;
+  padding: 6px 8px;
+  border-radius: 8px;
+  background: rgba(15, 23, 42, 0.92);
+  color: #f8fafc;
+  font-size: 0.75rem;
+  line-height: 1.2;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.12s ease, transform 0.12s ease;
+  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.15);
+  z-index: 50;
+  max-width: 220px;
+  word-break: break-word;
+}
+
+.canvas-tooltip.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
