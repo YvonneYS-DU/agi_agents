@@ -23,29 +23,28 @@ setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.8",
-        "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
         "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
         "Topic :: Software Development :: Libraries :: Python Modules",
         "Topic :: Scientific/Engineering :: Artificial Intelligence",
     ],
-    python_requires=">=3.8",
+    python_requires=">=3.10",
     install_requires=[
-        # LangChain ecosystem - strict version control
-        "langchain>=0.3.0,<0.4.0",
-        "langchain-core>=0.3.5,<0.4.0",
-        "langchain-openai>=0.1.0",
-        "langchain-anthropic>=0.1.0", 
-        "langchain-text-splitters>=0.3.0",
-        
-        # AI API clients - strict version control
-        "openai>=1.76.0,<2.0.0",
-        "anthropic>=0.40.0,<1.0.0",
-        
-        # HTTP clients - strict version limits
-        "httpx>=0.27.2,<0.28.0",
+        # LangChain ecosystem - upgraded to 1.0+
+        "langchain>=1.0.0",
+        "langchain-core>=1.0.0",
+        "langchain-openai>=1.0.0",
+        "langchain-anthropic>=1.0.0",
+        "langchain-text-splitters>=1.0.0",
+
+        # AI API clients
+        "openai>=1.76.0",
+        "anthropic>=0.40.0",
+
+        # HTTP clients
+        "httpx>=0.27.2",
         "aiohttp>=3.8.0",
         "aiofiles>=23.0.0",
         
