@@ -3,7 +3,7 @@ name: Publish to PyPI
 on:
   release:
     types: [published]
-  workflow_dispatch:  
+  workflow_dispatch:
 
 jobs:
   publish:
@@ -12,10 +12,21 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - name: Determine Python version
+      id: python-version
+      run: |
+        # legacy/v0.2 branch uses Python 3.9 (langchain <1.0)
+        # main branch and others use Python 3.12 (langchain 1.0+)
+        if [[ "${{ github.ref }}" == refs/heads/legacy/* ]] || [[ "${{ github.event.release.target_commitish }}" == legacy/* ]]; then
+          echo "version=3.9" >> $GITHUB_OUTPUT
+        else
+          echo "version=3.12" >> $GITHUB_OUTPUT
+        fi
+
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.9'
+        python-version: ${{ steps.python-version.outputs.version }}
 
     - name: Install dependencies
       run: |

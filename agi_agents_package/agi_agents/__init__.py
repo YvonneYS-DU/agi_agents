@@ -5,11 +5,11 @@ This package provides a simplified API for creating and managing AI agents
 with multi-modal support (text and images) using LangChain framework.
 
 Author: YvonneYS-Du
-Version: 0.2.1
+Version: 1.0.0
 Date: Aug 2025
 """
 
 from .agi_agent import Agents, Contexts, Document
 
-__version__ = "0.2.1"
+__version__ = "1.0.0"
 __all__ = ["Agents", "Contexts", "Document"]
