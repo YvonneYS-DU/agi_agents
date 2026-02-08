@@ -37,6 +37,7 @@ setup(
         "langchain-core>=1.0.0",
         "langchain-openai>=1.0.0",
         "langchain-anthropic>=1.0.0",
+        "langchain-google-genai>=4.0.0",
         "langchain-text-splitters>=1.0.0",
 
         # AI API clients
