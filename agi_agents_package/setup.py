@@ -9,7 +9,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="agi-agents",
-    version="1.0.0",
+    version="1.0.1",
     author="YvonneYS-Du",
     author_email="yvdu.ai2077@gmail.com",
     description="A streamlined interface for LangChain AI Agent creation with multi-modal support",
